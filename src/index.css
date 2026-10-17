@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-canvas: #F5F5F7;
+    --bg-panel: #FFFFFF;
+    --bg-elevated: #EBEBED;
+    --border-hairline: #E1E1E1;
+    --text-primary: #111111;
+    --text-secondary: #52525B;
+    --text-muted: #71717A;
+    --accent-primary: #111111;
+    --accent-gold: #9A7338;
+    --accent-contrast: #FFFFFF;
+  }
+
+  .dark {
+    --bg-canvas: #050505;
+    --bg-panel: #0C0C0C;
+    --bg-elevated: #121212;
+    --border-hairline: #161616;
+    --text-primary: #F4F4F5;
+    --text-secondary: #A1A1AA;
+    --text-muted: #71717A;
+    --accent-primary: #C9A063;
+    --accent-gold: #C9A063;
+    --accent-contrast: #050505;
+  }
+
+  html {
+    font-family: 'Geist', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+    transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+.font-serif-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-mono-tabular {
+  font-family: 'IBM Plex Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.font-ui {
+  font-family: 'Geist', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.step-slide-transition {
+  transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1), opacity 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom subtle range slider styling */
+input[type="range"].editorial-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type="range"].editorial-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid var(--bg-panel);
+  background: var(--accent-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+input[type="range"].editorial-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+/* Ambient glow & anamorphic beam */
+@keyframes anamorphicPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scaleX(0.98);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scaleX(1.02);
+  }
+}
+
+.animate-anamorphic {
+  animation: anamorphicPulse 7s ease-in-out infinite;
+}
+
+/* Subtle video grain emulation */
+.cinema-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 4px 4px;
+}
+
+/* Slow motion cinematic drift for video background */
+@keyframes slowMotionDrift {
+  0% {
+    transform: scale(1.0) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.05) translate3d(0, -8px, 0);
+  }
+  100% {
+    transform: scale(1.0) translate3d(0, 0, 0);
+  }
+}
+
+.animate-slow-motion {
+  animation: slowMotionDrift 22s ease-in-out infinite;
+  will-change: transform;
+}
+

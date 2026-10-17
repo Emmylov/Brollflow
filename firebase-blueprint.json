@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Creator account and workflow personalization profile",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth user ID"
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "creatorFormat": {
+          "type": "string",
+          "description": "Selected creator workflow style",
+          "enum": [
+            "Talking Head / Face-Cam Creator",
+            "100% Faceless Automation Channel",
+            "Agency / Multi-Client Team"
+          ]
+        },
+        "niche": {
+          "type": "string",
+          "description": "Selected content niche"
+        },
+        "microTags": {
+          "type": "array",
+          "description": "List of micro-topic tags"
+        },
+        "platform": {
+          "type": "string",
+          "description": "Target social platform and aspect ratio"
+        },
+        "pacingDensity": {
+          "type": "string",
+          "description": "Editing cadence and cut frequency"
+        },
+        "brandTone": {
+          "type": "string",
+          "description": "Brand tone and voice personality profile"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last update"
+        }
+      },
+      "required": ["uid", "creatorFormat", "niche", "platform", "pacingDensity", "brandTone"]
+    },
+    "SavedProject": {
+      "title": "SavedProject",
+      "description": "User created video timeline project with script, B-roll, subtitles, and SFX cues",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique project identifier"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner Firebase Auth user ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Project title"
+        },
+        "aspectRatio": {
+          "type": "string",
+          "description": "Video frame aspect ratio",
+          "enum": ["9:16", "16:9", "1:1"]
+        },
+        "scriptText": {
+          "type": "string",
+          "description": "Raw script text"
+        },
+        "brollItems": {
+          "type": "array",
+          "description": "List of B-roll video clip timeline items"
+        },
+        "captionItems": {
+          "type": "array",
+          "description": "List of kinetic caption timeline items"
+        },
+        "sfxItems": {
+          "type": "array",
+          "description": "List of sound effect cue timeline items"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last modification"
+        },
+        "thumbnailUrl": {
+          "type": "string",
+          "description": "Thumbnail preview image URL"
+        }
+      },
+      "required": ["id", "userId", "name", "aspectRatio"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Creator account profile with workflow configuration"
+    },
+    "/users/{userId}/projects/{projectId}": {
+      "schema": "SavedProject",
+      "description": "User video timeline project files in Firestore vault"
+    }
+  }
+}

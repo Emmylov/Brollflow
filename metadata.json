@@ -1,0 +1,6 @@
+{
+  "name": "B-Roll Flow",
+  "description": "Editorial-grade AI video timeline matcher, automatic B-roll assembly engine, and collaborative NLE workspace for cinema and digital creators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
